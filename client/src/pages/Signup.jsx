@@ -53,7 +53,7 @@ export default function Signup() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               className="peer w-full border rounded-md px-4 pt-5 pb-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder=" "
+              placeholder="Nishar Ahmad"
             />
             <label
               htmlFor="name"
@@ -71,7 +71,7 @@ export default function Signup() {
               value={dob}
               onChange={(e) => setDob(e.target.value)}
               className="peer w-full border rounded-md px-4 pt-5 pb-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder=" "
+              placeholder="DD/MM/YYYY"
             />
             <label
               htmlFor="dob"
@@ -89,7 +89,7 @@ export default function Signup() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="peer w-full border rounded-md px-4 pt-5 pb-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder=" "
+              placeholder="ahmad@gmail.com"
             />
             <label
               htmlFor="email"
