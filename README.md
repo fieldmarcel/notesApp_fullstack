@@ -1,10 +1,10 @@
-# 📒 Note Taking App
+#  Note Taking App
 
 A full-stack note-taking application with secure authentication (Email OTP + Google Login), JWT-based authorization, and CRUD functionality for personal notes. The app is mobile-friendly and designed to closely replicate the provided design assets.
 
 ---
 
-## 🚀 Features
+##  Features
 
 - Signup/Login with **Email & OTP**
 - Input validation + error messages for invalid inputs/OTP/API errors
@@ -17,21 +17,18 @@ A full-stack note-taking application with secure authentication (Email OTP + Goo
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: React.js (Vite + TypeScript)
-- **Backend**: Node.js (Express + TypeScript)
+- **Frontend**: React.js (Vite)
+- **Backend**: Node.js (Express )
 - **Database**: MongoDB (Mongoose ODM)
-- **Authentication**: JWT + Google OAuth
-- **Email Service**: SMTP (e.g., Gmail/SendGrid)
+- **Authentication**: JWT
+- **Email Service**: SMTP (e.g., Gmail)
 - **Deployment**:  
   - Frontend → Vercel  
   - Backend → Render  
 
 ---
 
-## 📂 Project Structure
-
-
-## Project Structure
+##  Project Structure
 
 ```
 noteApp/
