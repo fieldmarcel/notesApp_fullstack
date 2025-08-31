@@ -7,6 +7,7 @@ import User from "../models/User.js";
 const router = express.Router();
 
 // POST /auth/signup → generate and send OTP
+
 router.post("/signup", async (req, res) => {
   try {
     const { name, dob, email } = req.body;
