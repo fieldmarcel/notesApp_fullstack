@@ -15,16 +15,21 @@ A full-stack note-taking application with secure authentication (Email OTP + Goo
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
-- **Frontend**: React.js (Vite)
-- **Backend**: Node.js (Express )
-- **Database**: MongoDB (Mongoose ODM)
-- **Authentication**: JWT
-- **Email Service**: SMTP (e.g., Gmail)
-- **Deployment**:  
-  - Frontend → Vercel  
-  - Backend → Render  
+### Frontend
+- React with Vite
+- Tailwind CSS for styling
+- React Router for navigation
+- Axios for API calls
+- Lucide React for icons
+
+### Backend
+- Node.js & Express
+- MongoDB & Mongoose
+- JWT for authentication
+- Nodemailer for emails
+- bcrypt for password hashing
 
 ---
 
