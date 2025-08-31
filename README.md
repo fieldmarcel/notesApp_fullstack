@@ -17,23 +17,24 @@ A full-stack note-taking application built with **React (Vite)** frontend and **
 
 ## Project Structure
 
+```
 noteApp/
-├── client/ # React frontend
-│ ├── public/
-│ ├── src/
-│ ├── .env
-│ ├── package.json
-│ └── ...
-├── server/ # Express backend
-│ ├── config/ # DB config
-│ ├── middleware/ # Auth middleware
-│ ├── models/ # Mongoose models
-│ ├── routes/ # API routes
-│ ├── utils/ # Helpers
-│ ├── .env
-│ ├── server.js
-│ └── package.json
-
+├── client/                # React frontend
+│   ├── public/
+│   ├── src/
+│   ├── .env
+│   ├── package.json
+│   └── ...
+├── server/                # Express backend
+│   ├── config/            # DB config
+│   ├── middleware/        # Auth middleware
+│   ├── models/            # Mongoose models
+│   ├── routes/            # API routes
+│   ├── utils/             # Helpers
+│   ├── .env
+│   ├── server.js
+│   └── package.json
+```
 
 
 ---
