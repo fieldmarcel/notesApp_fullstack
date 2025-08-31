@@ -9,6 +9,7 @@ export default function Signup() {
   const [name, setName] = useState("");
   const [dob, setDob] = useState("");
   const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false); // ✅ loading state
 
   const navigate = useNavigate(); // ✅ initialize navigation
 
@@ -18,11 +19,14 @@ export default function Signup() {
     }
 
     try {
+      setIsLoading(true);
       const res = await sendOtp({ name, dob, email });
       alert(res.message); // OTP sent
       navigate("/");
     } catch (err) {
       alert(err.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -104,7 +108,7 @@ export default function Signup() {
             onClick={handleSignup}
             className="w-full max-w-sm bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 transition"
           >
-            Get OTP
+            {isLoading ? "Sending OTP..." : "Get OTP"}
           </button>
 
           {/* Sign In Link */}
