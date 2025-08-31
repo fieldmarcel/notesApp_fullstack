@@ -1,8 +1,9 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
-import rightColumn from "../assets/right_column.png";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
+import rightColumn from "../assets/right_column.png";
+import { sendOtp } from "../services/authServices";
 
 export default function Signup() {
   const [name, setName] = useState("");
@@ -11,12 +12,17 @@ export default function Signup() {
 
   const navigate = useNavigate(); // ✅ initialize navigation
 
-  const handleSignup = () => {
-    if (name && dob && email) {
-      // Normally you'd call backend API here
-      navigate("/"); // ✅ redirect to login page after signup
-    } else {
-      alert("Please fill all fields!");
+  const handleSignup = async () => {
+    if (!name || !dob || !email) {
+      return alert("Please fill all fields!");
+    }
+
+    try {
+      const res = await sendOtp({ name, dob, email });
+      alert(res.message); // OTP sent
+      navigate("/");
+    } catch (err) {
+      alert(err.message);
     }
   };
 
@@ -39,37 +45,58 @@ export default function Signup() {
             Sign up to enjoy the feature of HD
           </p>
 
-          {/* Name */}
-          <div className="mb-4 w-full max-w-sm">
+          {/* Name with outlined label */}
+          <div className="relative mb-4 w-full max-w-sm">
             <input
               type="text"
-              placeholder="Your Name"
+              id="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full border rounded-md px-4 py-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="peer w-full border rounded-md px-4 pt-5 pb-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder=" "
             />
+            <label
+              htmlFor="name"
+              className="absolute -top-2 left-3 bg-white px-1 text-sm text-gray-600 peer-focus:text-blue-500"
+            >
+              Your Name
+            </label>
           </div>
 
-          {/* DOB */}
-          <div className="mb-4 w-full max-w-sm">
+          {/* DOB with outlined label */}
+          <div className="relative mb-4 w-full max-w-sm">
             <input
               type="text"
-              placeholder="Date of Birth"
+              id="dob"
               value={dob}
               onChange={(e) => setDob(e.target.value)}
-              className="w-full border rounded-md px-4 py-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="peer w-full border rounded-md px-4 pt-5 pb-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder=" "
             />
+            <label
+              htmlFor="dob"
+              className="absolute -top-2 left-3 bg-white px-1 text-sm text-gray-600 peer-focus:text-blue-500"
+            >
+              Date of Birth
+            </label>
           </div>
 
-          {/* Email */}
-          <div className="mb-6 w-full max-w-sm">
+          {/* Email with outlined label */}
+          <div className="relative mb-6 w-full max-w-sm">
             <input
               type="email"
-              placeholder="Email"
+              id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full border rounded-md px-4 py-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="peer w-full border rounded-md px-4 pt-5 pb-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder=" "
             />
+            <label
+              htmlFor="email"
+              className="absolute -top-2 left-3 bg-white px-1 text-sm text-gray-600 peer-focus:text-blue-500"
+            >
+              Email
+            </label>
           </div>
 
           {/* Button */}

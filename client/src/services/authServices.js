@@ -1,41 +1,30 @@
 import axios from "axios";
 
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = "http://localhost:5000/auth"; // replace with your deployed URL later
 
-export const signupAPI = async (email, password) => {
+export const sendOtp = async (userData) => {
   try {
-    const res = await axios.post(`${API_URL}/auth/signup`, { email, password });
+    const res = await axios.post(`${API_URL}/signup`, userData);
     return res.data;
   } catch (err) {
-    throw err.response?.data || err;
+    throw err.response?.data || { message: "Server Error" };
   }
 };
 
-export const verifyOtpAPI = async (email, otp) => {
+export const verifyOtp = async (loginData) => {
   try {
-    const res = await axios.post(`${API_URL}/auth/verify-otp`, { email, otp });
+    const res = await axios.post(`${API_URL}/login`, loginData);
     return res.data;
   } catch (err) {
-    throw err.response?.data || err;
+    throw err.response?.data || { message: "Server Error" };
   }
 };
 
-export const loginAPI = async (email, password) => {
+export const resendOtp = async (data) => {
   try {
-    const res = await axios.post(`${API_URL}/auth/login`, { email, password });
+    const res = await axios.post(`${API_URL}/resend-otp`, data);
     return res.data;
   } catch (err) {
-    throw err.response?.data || err;
-  }
-};
-
-export const googleLoginAPI = async (googleToken) => {
-  try {
-    const res = await axios.post(`${API_URL}/auth/google`, {
-      token: googleToken,
-    });
-    return res.data;
-  } catch (err) {
-    throw err.response?.data || err;
+    throw err.response?.data || { message: "Error resending OTP" };
   }
 };

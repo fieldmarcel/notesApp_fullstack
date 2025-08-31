@@ -2,21 +2,55 @@
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import rightColumn from "../assets/right_column.png";
 import logo from "../assets/logo.png";
+import rightColumn from "../assets/right_column.png";
+import { verifyOtp, resendOtp } from "../services/authServices";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
   const [showOtp, setShowOtp] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [keepLoggedIn, setKeepLoggedIn] = useState(false);
 
-  const navigate = useNavigate(); // ✅ Initialize navigate
+  const navigate = useNavigate();
 
-  const handleLogin = () => {
-    if (email && otp) {
+  const handleResendOtp = async () => {
+    if (!email) {
+      return alert("Enter your email first to resend OTP!");
+    }
+    try {
+      setLoading(true);
+      const res = await resendOtp({ email });
+      alert(res.message);
+    } catch (err) {
+      alert(err.message || "Failed to resend OTP");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleLogin = async () => {
+    if (!email || !otp) {
+      return alert("Please enter Email and OTP!");
+    }
+
+    try {
+      const res = await verifyOtp({ email, otp });
+
+      localStorage.setItem("token", res.token);
+      localStorage.setItem("user", JSON.stringify(res.user));
+
+      // if (keepLoggedIn) {
+      //   localStorage.setItem("token", res.token); // long-lived
+      // } else {
+      //   sessionStorage.setItem("token", res.token); // clears on browser close
+      // }
+
+      alert("Login successful!");
       navigate("/dashboard");
-    } else {
-      alert("Please enter Email and OTP!");
+    } catch (err) {
+      alert(err.message);
     }
   };
 
@@ -41,26 +75,41 @@ export default function Login() {
               Please login to continue to your account.
             </p>
 
-            {/* Email */}
-            <div className="mb-4">
+            {/* Email with outlined label */}
+            <div className="relative mb-6">
               <input
                 type="email"
-                placeholder="Email"
+                id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full border rounded-md px-4 py-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="peer w-full border rounded-md px-4 pt-5 pb-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Email"
               />
+              <label
+                htmlFor="email"
+                className="absolute -top-2 left-3 bg-white px-1 text-sm text-gray-600 peer-focus:text-blue-500"
+              >
+                Email
+              </label>
             </div>
 
-            {/* OTP */}
-            <div className="mb-4 relative">
+            {/* OTP with outlined label + eye toggle */}
+            <div className="relative mb-6">
               <input
                 type={showOtp ? "text" : "password"}
-                placeholder="OTP"
+                id="otp"
                 value={otp}
                 onChange={(e) => setOtp(e.target.value)}
-                className="w-full border rounded-md px-4 py-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="peer w-full border rounded-md px-4 pt-5 pb-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="OTP"
               />
+              <label
+                htmlFor="otp"
+                className="absolute -top-2 left-3 bg-white px-1 text-sm text-gray-600 peer-focus:text-blue-500"
+              >
+                OTP
+              </label>
+
               <button
                 type="button"
                 onClick={() => setShowOtp(!showOtp)}
@@ -71,8 +120,11 @@ export default function Login() {
             </div>
 
             {/* Resend OTP */}
-            <p className="text-blue-600 text-sm font-medium mb-3 cursor-pointer hover:underline">
-              Resend OTP
+            <p
+              onClick={handleResendOtp}
+              className="text-blue-600 text-sm font-medium mb-3 cursor-pointer hover:underline"
+            >
+              {loading ? "Sending..." : "Resend OTP"}
             </p>
 
             {/* Keep me logged in */}
@@ -80,6 +132,8 @@ export default function Login() {
               <input
                 type="checkbox"
                 id="keepLoggedIn"
+                checked={keepLoggedIn}
+                onChange={(e) => setKeepLoggedIn(e.target.checked)}
                 className="w-4 h-4 mr-2 border-gray-300 rounded"
               />
               <label htmlFor="keepLoggedIn" className="text-sm text-gray-700">
@@ -108,7 +162,7 @@ export default function Login() {
           </div>
         </div>
 
-        {/* Right Section - Image (hidden on mobile) */}
+        {/* Right Section - Image */}
         <div className="hidden md:block md:w-1/2 bg-black">
           <img
             src={rightColumn}
