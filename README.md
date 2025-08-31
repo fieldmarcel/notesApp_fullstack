@@ -145,17 +145,19 @@ GET /api/notes – Get user notes (requires JWT)
 POST /api/notes – Create a note (requires JWT)
 
 DELETE /api/notes/:id – Delete note (requires JWT)
+## Environment Variables
 
-Environment Variables
-Variable	Description
-PORT	Server port (default: 5000)
-MONGO_URI	MongoDB connection string
-EMAIL_HOST	SMTP host for sending emails
-EMAIL_PORT	SMTP port
-EMAIL_USER	Email address to send OTPs
-EMAIL_PASS	Email password
-JWT_SECRET	Secret key for JWT authentication
-VITE_API_URL	URL of deployed backend (frontend)
+| Variable       | Description                                |
+|----------------|--------------------------------------------|
+| PORT           | Server port (default: 5000)                |
+| MONGO_URI      | MongoDB connection string                  |
+| EMAIL_HOST     | SMTP host for sending emails               |
+| EMAIL_PORT     | SMTP port                                  |
+| EMAIL_USER     | Email address to send OTPs                 |
+| EMAIL_PASS     | Email password                             |
+| JWT_SECRET     | Secret key for JWT authentication         |
+| VITE_API_URL   | URL of deployed backend (frontend)         |
+
 
 Notes
 Ensure backend URL is publicly accessible for the frontend.
