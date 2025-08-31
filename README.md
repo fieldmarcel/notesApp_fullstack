@@ -1,19 +1,35 @@
-# NoteApp
+# 📒 Note Taking App
 
-A full-stack note-taking application built with **React (Vite)** frontend and **Node.js/Express** backend with **MongoDB**. Users can sign up/login via email OTP and manage their notes (create, delete).
+A full-stack note-taking application with secure authentication (Email OTP + Google Login), JWT-based authorization, and CRUD functionality for personal notes. The app is mobile-friendly and designed to closely replicate the provided design assets.
+
+---
+
+## 🚀 Features
+
+- Signup/Login with **Email & OTP**
+- Input validation + error messages for invalid inputs/OTP/API errors
+- Welcome page with user info after login
+- Create & delete personal notes
+- JWT-based authentication for secure APIs
+- Responsive UI (mobile-friendly)
 
 ---
 
-## Features
+## 🛠️ Tech Stack
 
-- User authentication via **OTP**.
-- Create, view, and delete notes.
-- Responsive dashboard UI.
-- Persistent login using localStorage.
-- Scrollable notes section for better UX.
-- Ready for deployment (Vercel frontend + Render backend).
+- **Frontend**: React.js (Vite + TypeScript)
+- **Backend**: Node.js (Express + TypeScript)
+- **Database**: MongoDB (Mongoose ODM)
+- **Authentication**: JWT + Google OAuth
+- **Email Service**: SMTP (e.g., Gmail/SendGrid)
+- **Deployment**:  
+  - Frontend → Vercel  
+  - Backend → Render  
 
 ---
+
+## 📂 Project Structure
+
 
 ## Project Structure
 
