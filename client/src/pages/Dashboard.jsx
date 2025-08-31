@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo_dash.png";
 
+// Instead of hardcoding localhost, use import.meta.env
+const API_URL = import.meta.env.VITE_API_URL;
+
 export default function Dashboard() {
   const [notes, setNotes] = useState([]);
   const [user, setUser] = useState(null);
@@ -20,7 +23,7 @@ export default function Dashboard() {
       setUser(JSON.parse(storedUser));
 
       axios
-        .get("http://localhost:5000/api/notes", {
+        .get(`${API_URL}/api/notes`, {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((res) => setNotes(res.data))
@@ -37,7 +40,7 @@ export default function Dashboard() {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/notes",
+        `${API_URL}/api/notes`,
         { content: newNoteContent },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -53,7 +56,7 @@ export default function Dashboard() {
   const deleteNote = async (id) => {
     const token = localStorage.getItem("token");
     try {
-      await axios.delete(`http://localhost:5000/api/notes/${id}`, {
+      await axios.delete(`${API_URL}/api/notes/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setNotes(notes.filter((n) => n._id !== id));
