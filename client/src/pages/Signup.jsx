@@ -22,7 +22,7 @@ export default function Signup() {
       setIsLoading(true);
       const res = await sendOtp({ name, dob, email });
       alert(res.message); // OTP sent
-      navigate("/");
+      navigate("/login");
     } catch (err) {
       alert(err.message);
     } finally {
