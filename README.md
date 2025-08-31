@@ -57,11 +57,7 @@ noteApp/
 
 ---
 
-## Tech Stack
 
-- **Frontend:** React, TailwindCSS, Vite, Axios, React Router DOM  
-- **Backend:** Node.js, Express, MongoDB, Mongoose, Nodemailer  
-- **Deployment:** Vercel (Frontend), Render (Backend)
 
 ---
 
