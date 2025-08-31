@@ -34,8 +34,7 @@ noteApp/
 │ ├── server.js
 │ └── package.json
 
-yaml
-Copy code
+
 
 ---
 
@@ -164,6 +163,5 @@ For production OTP sending, configure a valid SMTP service (Gmail, SendGrid, etc
 
 Keep localStorage login for persistence; use sessionStorage for session-only login.
 
-License
-MIT License
+
 
