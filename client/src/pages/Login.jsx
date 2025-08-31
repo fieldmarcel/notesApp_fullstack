@@ -86,7 +86,7 @@ export default function Login() {
                 placeholder="Email"
               />
               <label
-                htmlFor="email"
+                htmlFor="ahmad@gmail.com"
                 className="absolute -top-2 left-3 bg-white px-1 text-sm text-gray-600 peer-focus:text-blue-500"
               >
                 Email
@@ -101,7 +101,7 @@ export default function Login() {
                 value={otp}
                 onChange={(e) => setOtp(e.target.value)}
                 className="peer w-full border rounded-md px-4 pt-5 pb-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="OTP"
+                placeholder="123456"
               />
               <label
                 htmlFor="otp"
