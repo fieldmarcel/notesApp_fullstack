@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://noteapp-7b6u.onrender.com"; // replace with your deployed URL later
+const API_URL = "https://noteapp-7b6u.onrender.com"; 
 
 export const sendOtp = async (userData) => {
   try {
