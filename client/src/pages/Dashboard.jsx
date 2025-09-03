@@ -44,6 +44,8 @@ export default function Dashboard() {
         { content: newNoteContent },
         { headers: { Authorization: `Bearer ${token}` } }
       );
+       console.log(res.data); // <-- check this in browser console
+
       setNotes([res.data, ...notes]);
       setNewNoteContent(""); // clear input
       setShowInput(false); // hide input box

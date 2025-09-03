@@ -11,8 +11,7 @@ export default function Signup() {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false); // ✅ loading state
 
-  const navigate = useNavigate(); // ✅ initialize navigation
-
+  const navigate = useNavigate(); 
   const handleSignup = async () => {
     if (!name || !dob || !email) {
       return alert("Please fill all fields!");
@@ -21,7 +20,7 @@ export default function Signup() {
     try {
       setIsLoading(true);
       const res = await sendOtp({ name, dob, email });
-      alert(res.message); // OTP sent
+      alert(res.message); 
       navigate("/login");
     } catch (err) {
       alert(err.message);
@@ -57,7 +56,7 @@ export default function Signup() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               className="peer w-full border rounded-md px-4 pt-5 pb-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Nishar Ahmad"
+              placeholder="Shivanshu Tripathi"
             />
             <label
               htmlFor="name"
@@ -93,7 +92,7 @@ export default function Signup() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="peer w-full border rounded-md px-4 pt-5 pb-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="ahmad@gmail.com"
+              placeholder="shivanshu@gmail.com"
             />
             <label
               htmlFor="email"

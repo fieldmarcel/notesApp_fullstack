@@ -13,7 +13,7 @@ export default function Navbar() {
             {user ? (
               <>
                 <span className="text-gray-700">
-                  Hi, {user.name || user.email}
+                  Hey there!, {user.name || user.email}
                 </span>
                 <button
                   onClick={logout}

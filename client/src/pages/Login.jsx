@@ -83,7 +83,7 @@ export default function Login() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="peer w-full border rounded-md px-4 pt-5 pb-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="ahmad@gmail.com"
+                placeholder="shivanshu@gmail.com"
               />
               <label
                 htmlFor="email"
@@ -93,7 +93,6 @@ export default function Login() {
               </label>
             </div>
 
-            {/* OTP with outlined label + eye toggle */}
             <div className="relative mb-6">
               <input
                 type={showOtp ? "text" : "password"}
@@ -101,7 +100,7 @@ export default function Login() {
                 value={otp}
                 onChange={(e) => setOtp(e.target.value)}
                 className="peer w-full border rounded-md px-4 pt-5 pb-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="123456"
+                placeholder="12345678"
               />
               <label
                 htmlFor="otp"
